@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [dt, setDt] = useState({});
 
   useEffect(() => {
-    fetch("/api/items")
+    fetch("/api/dt")
       .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
+      .then((data) => setDt(data));
+  });
 
   function renderItems() {
-    return items.map((item, i) => {
-      return (
-        <div key={i}>
-          <h3>{item.name}</h3>
-          <p>Price: {item.price}</p>
-        </div>
-      );
-    });
+    return (
+      <div>
+        <h3>Date: {dt.date}</h3>
+        <h3>Text: {dt.text}</h3>
+      </div>
+    );
   }
 
   return (
     <main>
-      <h1>Example webshop</h1>
+      <h1>DT Today</h1>
       {renderItems()}
     </main>
   );
