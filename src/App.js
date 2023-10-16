@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [dt, setDt] = useState({});
+  const [scripture, setScripture] = useState("");
 
   useEffect(() => {
     fetch("/api/dt")
@@ -9,11 +10,21 @@ function App() {
       .then((data) => setDt(data));
   });
 
+  useEffect(() => {
+    fetch(`/api/esv/${dt.text}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const passages = data.passages[0].trim().split('[').filter(s => s !== "").join("\r\n");
+        setScripture(passages)
+      });
+  });
+
   function renderItems() {
     return (
       <div>
         <h3>Date: {dt.date}</h3>
-        <h3>Text: {dt.text}</h3>
+        <h3>Reference: {dt.text}</h3>
+        <p>{scripture}</p>
       </div>
     );
   }

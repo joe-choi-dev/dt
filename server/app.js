@@ -1,4 +1,5 @@
-const express = require("express");
+import fetch from 'node-fetch';
+import express from 'express';
 
 const app = express();
 
@@ -18,6 +19,22 @@ app.get("/api/dts", (req, res) => {
   res.send(dts);
 });
 
+app.get("/api/esv/:passage", async (req, res) => {
+  try {    
+    const resp = await fetch(`https://api.esv.org/v3/passage/text/?q=${req.params['passage']}&indent-poetry=false&include-headings=false&include-footnotes=false&include-verse-numbers=true&include-short-copyright=false&include-passage-references=false`, {
+      method: 'GET',
+      headers: {
+        Authorization: "b31df51b9a0e5b1ca3d10799eaa1b5800bd368e7",
+      },
+    })
+    const json = await resp.json();
+    res.send(json);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// generated from scripts
 const dts = [
   { date: 'Tuesday, September 12, 2023', text: 'Romans 1-3' },
   { date: 'Wednesday, September 13, 2023', text: 'Romans 4-7' },
