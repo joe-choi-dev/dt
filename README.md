@@ -1,4 +1,7 @@
-To start with this code:
+Flow:
+0) `npm i` from both root and server
+1) `npm run build` to generate the react build at root
+2) drag the build folder into the server
+3) `npm run start` from the /server folder to allow express
 
-Open the root folder in a terniaml and use `npm i` to install the react dependencies
-Open the server folder in a terniaml and use `npm i` to install the express dependencies 
+Source: https://www.youtube.com/watch?v=4pUBO31nkpk 
