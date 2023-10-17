@@ -20,10 +20,11 @@ function App() {
   });
 
   function renderItems() {
+    const esvUrl = `https://esv.org/${dt.text}`;
     return (
       <div>
-        <h3>Date: {dt.date}</h3>
-        <h3>Reference: {dt.text}</h3>
+        <h3>Date - {dt.date}</h3>
+        <h3><a href={esvUrl}>Text - {dt.text}</a></h3>
         <p dangerouslySetInnerHTML={{__html: scripture}} />
       </div>
     );
