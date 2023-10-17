@@ -14,7 +14,7 @@ function App() {
     fetch(`/api/esv/${dt.text}`)
       .then((res) => res.json())
       .then((data) => {
-        const passages = data.passages[0].trim().split('[').filter(s => s !== "").join("\r\n");
+        const passages = data.passages[0].trim().split('[').filter(s => s !== "").join("<br />");
         setScripture(passages)
       });
   });
@@ -24,7 +24,7 @@ function App() {
       <div>
         <h3>Date: {dt.date}</h3>
         <h3>Reference: {dt.text}</h3>
-        <p>{scripture}</p>
+        <p dangerouslySetInnerHTML={{__html: scripture}} />
       </div>
     );
   }
