@@ -2,34 +2,97 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [dt, setDt] = useState({}); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6"}
+  const [passageReqArr, setPassageReqArr] = useState([]); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6"}
   const [esvResp, setEsvResp] = useState({}); // esv api body
   const [esvDisplayText, setEsvDisplayText] = useState(""); // esv text to display
+
+  function parseJSON(response) {
+    return response.json();
+  }
 
   useEffect(() => {
     fetch("/api/dt")
       .then((res) => res.json())
-      .then((data) => setDt(data));
+      .then((data) => {
+        // Assumptions:
+        // chapters are alwaysbetween the "-" in the first segemnt of the ":" ie. 2 Thessalonians 1-3, 2 Thessalonians 1, 2 Thessalonians 1:1-10
+        // verses are always the range after the first ":"
+        // if a single passage containers verses, it doesn't have multiple chapters ie. 2 Thessalonians 1:1-10
+        //
+        // examples: 
+        // 2 Thessalonians 1-3 -> [2 Thessalonians 1, 2 Thessalonians 2, 2 Thessalonians 3]
+        // 
+        function passageBreakdown(passage) {
+          let psg = !passage.includes(" ") ? `${passage} 1`: passage; // ie. Philemon (other 1 chpt books)
+
+          const isNumberedBook = (psg.match(/^\d/)); //starts with a number
+          const containsVerses = psg.includes(":");
+          const book = isNumberedBook ? `${psg.split(" ")[0]} ${psg.split(" ")[1]}`: psg.split(" ")[0];
+          const startChapter = isNumberedBook ? psg.split(" ")[2].split("-")[0] : psg.split(" ")[1].split("-")[0];
+          const endChapter = isNumberedBook ? psg.split(" ")[2].split("-")[1] : psg.split(" ")[1].split("-")[1];
+
+          if (containsVerses || !endChapter) {
+            return [psg]
+          } else {
+            let i = startChapter;
+            const passArr = []
+            while (i <= endChapter) {
+              passArr.push(`${book} ${i}`)
+              i++;
+            }
+            return passArr;
+          }
+        }
+
+        // Assumes passages as a comma separated string (ie. (Titus 1-3, Philemon))
+        function passageToReqArray(passages) {
+          const passageArr = passages.split(", ");
+          let returnArr = []
+          console.log("joe", passageArr)
+          for (let i = 0; i < passageArr.length; i++) {
+            returnArr.push(...passageBreakdown(passageArr[i]))
+          }
+          returnArr = returnArr.map(i => '/api/esv/' + i);
+          return returnArr;
+        }
+
+        setDt(data)
+        setPassageReqArr(passageToReqArray(data.text))
+    });
   }, []);
 
   useEffect(() => {
-    fetch(`/api/esv/${dt.text}`)
-      .then((res) => res.json())
-      .then((data) => {
+    // call each api passage individually to avoid quota issues
+    Promise.all(passageReqArr.map(url => fetch(url).then(parseJSON)))
+      .then(data => {
         setEsvResp(data);
-        (data.hasOwnProperty("passages") && Array.isArray(data.passages) && data.passages.length > 0) 
-          && setEsvDisplayText(data.passages[0].trim().split('[').filter(s => s !== "").join("<br />"));
-      });
-  }, [dt]);
+
+        let combinedText = "";
+        for (let i = 0; i < data.length; i++) {
+          if (i === 0) {
+            combinedText += data[i].canonical + "<br />" + data[i].passages[0].trim().split('[').filter(s => s !== "").join("<br />")
+          } else {
+            combinedText += "<br /><br />" + data[i].canonical + "<br />" + data[i].passages[0].trim().split('[').filter(s => s !== "").join("<br />")
+          }
+        }
+        setEsvDisplayText(combinedText)
+      })
+  }, [passageReqArr]);
 
   function renderItems() {
     const esvUrl = `https://esv.org/${dt.text}`;
+    let lineByLine = "";
+    let paragraph = "";
 
-    const lineByLine = (esvResp.hasOwnProperty("passages") && Array.isArray(esvResp.passages) && esvResp.passages.length > 0)  
-      ? esvResp.passages[0].trim().split('[').filter(s => s !== "").join("\r\n") 
-      : "";
-    const paragraph = (esvResp.hasOwnProperty("passages") && Array.isArray(esvResp.passages) && esvResp.passages.length > 0)  
-      ? esvResp.passages[0] 
-      : "";
+    if (esvResp.length > 0)  {
+      for (let i = 0; i < esvResp.length; i++) {
+        lineByLine += "\r\n" +  esvResp[i].canonical + "\r\n" + esvResp[i].passages[0].trim().split('[').filter(s => s !== "").join("\r\n")
+        paragraph += "\r\n" +  esvResp[i].canonical + "\r\n" + esvResp[i].passages[0] 
+      }
+      console.log('joe', lineByLine);
+      console.log('choi', paragraph)
+    }
+
     return (
       <div>
         <h3>Date - {dt.date}</h3>
