@@ -9,7 +9,7 @@ async function getDTs() {
         text: ""
     };
     const p = new PdfReader();
-    p.parseFileItems("./pdf/dt.pdf", (err, item) => {
+    p.parseFileItems("./pdf/2023.11_dt.pdf", (err, item) => {
         if (err) console.error("error:", err);
         else if (!item) {
             const jsonObject = json.dts.map(JSON.stringify);

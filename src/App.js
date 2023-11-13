@@ -15,7 +15,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         // Assumptions:
-        // chapters are alwaysbetween the "-" in the first segemnt of the ":" ie. 2 Thessalonians 1-3, 2 Thessalonians 1, 2 Thessalonians 1:1-10
+        // chapters are always between the "-" in the first segment of the ":" ie. 2 Thessalonians 1-3, 2 Thessalonians 1, 2 Thessalonians 1:1-10, 2 & 3 John
         // verses are always the range after the first ":"
         // if a single passage containers verses, it doesn't have multiple chapters ie. 2 Thessalonians 1:1-10
         //
@@ -48,7 +48,6 @@ function App() {
         function passageToReqArray(passages) {
           const passageArr = passages.split(", ");
           let returnArr = []
-          console.log("joe", passageArr)
           for (let i = 0; i < passageArr.length; i++) {
             returnArr.push(...passageBreakdown(passageArr[i]))
           }
