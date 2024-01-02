@@ -20,9 +20,11 @@ async function getDTs() {
         }
         else if (item.text) { 
             if (["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].some(day => item.text.startsWith(day))) {
+                console.log(item.text.trim());
                 currDT.date = item.text.trim();
             }
-            if (item.text.startsWith("Hebrews") && !item.text.startsWith("Hebrews 11:1-12:3")) {
+            if ((item.text.startsWith("Hebrews 11:") || item.text.startsWith("Hebrews 12:")) && !item.text.startsWith("Hebrews 11:1-12:3") && currDT) {
+                console.log(item.text.trim());
                 currDT.text = item.text.trim();
             }
             if (currDT.date !== "" && currDT.text !== "") {
@@ -31,6 +33,7 @@ async function getDTs() {
                     date: "",
                     text: ""
                 };
+
             }
         }
     });
