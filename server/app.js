@@ -50,11 +50,6 @@ const dts = [
   {
     date: 'Friday, February 2, 2024',
     text: '2 Timothy 1:5-7',
-    questions: []
-  },
-  {
-    date: 'Monday, February 5, 2024',
-    text: '2 Timothy 1:8-9',
     questions: [
       'From the exhortation to “fan into flame the gift of God” what can we learn about the relationship between God’s gift',
       'What are some gifts given to every Christian, and are there ways in which I have allowed the flames of these gifts to',
@@ -64,8 +59,8 @@ const dts = [
     ]
   },
   {
-    date: 'Tuesday, February 6, 2024',
-    text: '2 Timothy 1:10-12',
+    date: 'Monday, February 5, 2024',
+    text: '2 Timothy 1:8-9',
     questions: [
       'How can Apostle Paul so confidently ask Timothy to “share in suffering for the gospel”?',
       'In what ways am I “ashamed of the testimony about our LORD” or ashamed to “share in suffering for the gospel”?',
@@ -74,8 +69,8 @@ const dts = [
     ]
   },
   {
-    date: 'Wednesday, February 7, 2024',
-    text: '2 Timothy 1:13-14',
+    date: 'Tuesday, February 6, 2024',
+    text: '2 Timothy 1:10-12',
     questions: [
       'Reflect on the grand scale captured by v.10. What did Jesus accomplish?',
       'Reflect on how Apostle Paul describes his personal calling.',
@@ -84,8 +79,8 @@ const dts = [
     ]
   },
   {
-    date: 'Thursday, February 8, 2024',
-    text: '2 Timothy 1:15-18',
+    date: 'Wednesday, February 7, 2024',
+    text: '2 Timothy 1:13-14',
     questions: [
       'What are the “sound words” (or “teachings”) I am following?',
       'What is the “good deposit entrusted to [me]” and what does it mean to guard it?',
@@ -93,8 +88,8 @@ const dts = [
     ]
   },
   {
-    date: 'Friday, February 9, 2024',
-    text: '2 Timothy 2:1-2',
+    date: 'Thursday, February 8, 2024',
+    text: '2 Timothy 1:15-18',
     questions: [
       'Reflect on the words “all who are in Asia turned away from me.” Why might Apostle Paul have specifically named',
       'How was Onesiphorus able to refresh Apostle Paul?',
@@ -103,8 +98,8 @@ const dts = [
     ]
   },
   {
-    date: 'Monday, February 12, 2024',
-    text: '2 Timothy 2:3-7',
+    date: 'Friday, February 9, 2024',
+    text: '2 Timothy 2:1-2',
     questions: [
       'How does grace provide strength?',
       'What false sources of strength have kept me from experiencing grace?',
@@ -113,8 +108,8 @@ const dts = [
     ]
   },
   {
-    date: 'Tuesday, February 13, 2024',
-    text: '2 Timothy 2:8-13',
+    date: 'Monday, February 12, 2024',
+    text: '2 Timothy 2:3-7',
     questions: [
       'What is the picture of Christian life depicted in these verses? How does this match my view of Christian life?',
       'What are the qualities of a soldier, an athlete, and a hardworking farmer that I need to emulate?',
@@ -123,16 +118,16 @@ const dts = [
     ]
   },
   {
-    date: 'Wednesday, February 14, 2024',
-    text: '2 Timothy 2:14-19',
+    date: 'Tuesday, February 13, 2024',
+    text: '2 Timothy 2:8-13',
     questions: [
       'What does Paul exhort Timothy to “remember” and why? How would my life be different if I remembered this',
       'What is the relationship between Apostle Paul “suffering” and being “bound with chains as a criminal” and the word'
     ]
   },
   {
-    date: 'Thursday, February 15, 2024',
-    text: '2 Timothy 2:20-21',
+    date: 'Wednesday, February 14, 2024',
+    text: '2 Timothy 2:14-19',
     questions: [
       'Given the context of the rest of the passage, why is it important for me to “do [my] best to present [myself] to God as',
       'How do people swerve from the truth?',
@@ -140,8 +135,8 @@ const dts = [
     ]
   },
   {
-    date: 'Friday, February 16, 2024',
-    text: '2 Timothy 2:22-26',
+    date: 'Thursday, February 15, 2024',
+    text: '2 Timothy 2:20-21',
     questions: [
       'What are the dishonorable things I need to cleanse myself from?',
       'What is my response to becoming “a vessel for honorable use, set apart as holy, useful to the master”?',
@@ -149,8 +144,8 @@ const dts = [
     ]
   },
   {
-    date: 'Monday, February 19, 2024',
-    text: '2 Timothy 3:1-5',
+    date: 'Friday, February 16, 2024',
+    text: '2 Timothy 2:22-26',
     questions: [
       'What is the relationship between “flee[ing] youthful passions” and “pursu[ing] righteousness”?',
       'Why is it important to do so “along with those who call on the Lord”?',
@@ -160,8 +155,8 @@ const dts = [
     ]
   },
   {
-    date: 'Tuesday, February 20, 2024',
-    text: '2 Timothy 3:6-9',
+    date: 'Monday, February 19, 2024',
+    text: '2 Timothy 3:1-5',
     questions: [
       'What are the characteristics of people in the last days and how is this an apt picture of people today?',
       'What can I learn from the fact that someone who has the “appearance of godliness” can be characterized as “lovers',
@@ -170,8 +165,8 @@ const dts = [
     ]
   },
   {
-    date: 'Wednesday, February 21, 2024',
-    text: '2 Timothy 3:10-13',
+    date: 'Tuesday, February 20, 2024',
+    text: '2 Timothy 3:6-9',
     questions: [
       'How is being “burdened with sins and led astray by various passions” related to “always learning and never able to',
       'How can this lead to being “weak”?',
@@ -179,8 +174,8 @@ const dts = [
     ]
   },
   {
-    date: 'Thursday, February 22, 2024',
-    text: '2 Timothy 3:14-17',
+    date: 'Wednesday, February 21, 2024',
+    text: '2 Timothy 3:10-13',
     questions: [
       'What can I learn about the relationship between Paul and Timothy from vv.10-11?',
       'How would such knowledge of Paul’s life and character have impacted Timothy’s own life?',
@@ -191,8 +186,8 @@ const dts = [
     ]
   },
   {
-    date: 'Friday, February 23, 2024',
-    text: '2 Timothy 4:1-2',
+    date: 'Thursday, February 22, 2024',
+    text: '2 Timothy 3:14-17',
     questions: [
       'According to v. 14, what is the basis of why Timothy could be confident to continue in what he learned?',
       'What insight about that nature of Gospel transmission can I learn from this?',
@@ -202,8 +197,8 @@ const dts = [
     ]
   },
   {
-    date: 'Monday, February 26, 2024',
-    text: '2 Timothy 4:3-5',
+    date: 'Friday, February 23, 2024',
+    text: '2 Timothy 4:1-2',
     questions: [
       'Imagine how Timothy might have felt receiving this charge from Apostle Paul. What are the five things Apostle Paul',
       'Which of the five charges is the most challenging for me?',
@@ -212,8 +207,8 @@ const dts = [
     ]
   },
   {
-    date: 'Tuesday, February 27, 2024',
-    text: '2 Timothy 4:6-8',
+    date: 'Monday, February 26, 2024',
+    text: '2 Timothy 4:3-5',
     questions: [
       'What sorts of things would “itching ears” want to hear?',
       'What or who are some of the sources in my life that tell me things to “suit [my] own passions”?',
@@ -222,8 +217,8 @@ const dts = [
     ]
   },
   {
-    date: 'Wednesday, February 28, 2024',
-    text: '2 Timothy 4:9-15',
+    date: 'Tuesday, February 27, 2024',
+    text: '2 Timothy 4:6-8',
     questions: [
       'How must I live in order to be able to say, along with Apostle Paul, that “I have fought the good fight, I have finished',
       'Inverting the verse, is there a good fight I have retreated from, a race I have stopped running, or ways I have',
@@ -231,8 +226,8 @@ const dts = [
     ]
   },
   {
-    date: 'Thursday, February 29, 2024',
-    text: '2 Timothy 4:16-22',
+    date: 'Wednesday, February 28, 2024',
+    text: '2 Timothy 4:9-15',
     questions: [
       'What is surprising and tragic about the reason Demas deserted Apostle Paul?',
       'What is the relationship between “lov[ing] this world” and deserting the work of God? (cf. James 4:4)',
@@ -244,13 +239,18 @@ const dts = [
     ]
   },
   {
-    date: 'Friday, March 1, 2024',
-    text: '2 Timothy 1:6-7',
+    date: 'Thursday, February 29, 2024',
+    text: '2 Timothy 4:16-22',
     questions: [
       'What enabled Apostle Paul to not hold a grudge against “all [who] deserted [him]”?',
       'How is it that Apostle Paul can break out into praise despite his difficult circumstances, such as imprisonment and',
       'What are the difficulties I am facing, and what are the truths I can remember, that will lead me to give thanks and'
     ]
+  },
+  {
+    date: 'Friday, March 1, 2024',
+    text: '2 Timothy 1:6-7',
+    questions: []
   },
   {
     date: 'Monday, March 4, 2024',
