@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [dt, setDt] = useState({}); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6"}
-  const [passageReqArr, setPassageReqArr] = useState([]); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6"}
+  const [dt, setDt] = useState({}); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6", "questions": []}
+  const [passageReqArr, setPassageReqArr] = useState([]); // {"date":"Tuesday, October 17, 2023","text":"Galatians 4-6", "questions": []}
   const [esvResp, setEsvResp] = useState({}); // esv api body
   const [esvDisplayText, setEsvDisplayText] = useState(""); // esv text to display
 
@@ -88,8 +88,6 @@ function App() {
         lineByLine += "\r\n" +  esvResp[i].canonical + "\r\n" + esvResp[i].passages[0].trim().split('[').filter(s => s !== "").join("\r\n")
         paragraph += "\r\n" +  esvResp[i].canonical + "\r\n" + esvResp[i].passages[0] 
       }
-      console.log('joe', lineByLine);
-      console.log('choi', paragraph)
     }
 
     return (
@@ -101,6 +99,16 @@ function App() {
             <button onClick={() => {navigator.clipboard.writeText(lineByLine)}}>Copy Text - Line by Line</button>
             <button onClick={() => {navigator.clipboard.writeText(paragraph)}}>Copy Text - Paragraph Format</button>
             <p dangerouslySetInnerHTML={{__html: esvDisplayText}} />
+          </div>
+        ): <div/>}
+        {dt.questions && dt.questions.length > 0 ? (
+          <div>
+            <h3>Questions</h3>
+            <ul>
+              {dt.questions && dt.questions.map((question, index) => (
+                <li key={index}>{question}</li>
+              ))}
+            </ul>
           </div>
         ): <div/>}
       </div>

@@ -6,7 +6,8 @@ async function getDTs() {
     }
     let currDT = {
         date: "",
-        text: ""
+        text: "",
+        questions: ""
     };
     const p = new PdfReader();
     p.parseFileItems("./pdf/2024.01_dt.pdf", (err, item) => {
